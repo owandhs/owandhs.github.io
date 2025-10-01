@@ -1,68 +1,215 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="robots" content="noindex"> <!-- 검색 노출 원치 않으면 유지 -->
-  <title>OAndH – SumSum Support</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>OAndH — SumSum Support</title>
   <style>
-    body {font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,sans-serif;
-          color:#111; margin:40px auto; max-width:760px; padding:0 16px;}
-    h1{margin:0 0 8px;} h2{margin-top:32px;} code,a{word-break:break-all}
-    .muted{color:#666} .hr{height:1px;background:#eee;margin:24px 0}
-    details{background:#fafafa;border:1px solid #eee;border-radius:8px;padding:12px;margin:8px 0}
+    :root { --fg:#111; --muted:#666; --bg:#fff; --line:#eee; --accent:#0b5fff; }
+    * { box-sizing: border-box; }
+    body{ font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif; color:var(--fg); background:var(--bg); margin:40px auto; max-width:820px; padding:0 16px; }
+    header{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    h1{ font-size:28px; margin:0; }
+    .muted{ color:var(--muted); }
+    .links a{ margin-right:12px; }
+    .hr{ height:1px; background:var(--line); margin:24px 0; }
+    .lang{ display:flex; gap:8px; }
+    .lang button{ border:1px solid var(--line); background:#fafafa; padding:6px 10px; border-radius:8px; cursor:pointer; }
+    .lang button.active{ border-color:var(--accent); color:var(--accent); background:#f2f7ff; font-weight:600; }
+    details{ background:#fafafa; border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin:10px 0; }
+    pre{ background:#fafafa; border:1px solid var(--line); border-radius:10px; padding:12px; white-space:pre-wrap; }
+    footer{ color:var(--muted); font-size:14px; margin:36px 0 16px; }
   </style>
 </head>
 <body>
-  <h1>SumSum: Number Puzzle</h1>
-  <p class="muted">Developer: OAndH · Version 1.0</p>
+  <header>
+    <div>
+      <h1 id="title">SumSum: Number Puzzle</h1>
+      <div id="subtitle" class="muted">Developer: OAndH · Version 1.0</div>
+    </div>
+    <nav class="lang" aria-label="Language selector">
+      <button id="btn-ko" type="button">한국어</button>
+      <button id="btn-en" type="button">English</button>
+      <button id="btn-ja" type="button">日本語</button>
+    </nav>
+  </header>
 
-  <p>
-    <a href="/app-ads.txt">app-ads.txt</a> ·
-    <a href="https://your-privacy-url">Privacy Policy</a> ·
-    <a href="https://your-terms-url">Terms of Service</a> ·
-    <a href="mailto:owandhs@gmail.com">Contact</a>
+  <p class="links">
+    <a href="/app-ads.txt" id="lnk-ads">app-ads.txt</a>
+    · <a href="#" id="lnk-privacy" target="_blank" rel="noopener">Privacy Policy</a>
+    · <a href="#" id="lnk-terms" target="_blank" rel="noopener">Terms</a>
+    · <a href="mailto:owandhs@gmail.com" id="lnk-contact">Contact</a>
   </p>
   <div class="hr"></div>
 
-  <h2>Support</h2>
-  <p><strong>문의 메일:</strong> <a href="mailto:owandhs@gmail.com">owandhs@gmail.com</a></p>
+  <main id="content">
+    <!-- Localized HTML will be injected here -->
+  </main>
 
-  <h3>빠른 안내 (FAQ)</h3>
-  <details open><summary><strong>어떻게 플레이하나요?</strong></summary>
-    <ul>
-      <li>보드의 숫자를 <strong>2개 이상</strong> 이어서 선택하세요.</li>
-      <li>선택 합이 중앙의 <strong>목표값</strong>과 같으면 제거 + 점수.</li>
-      <li>가로/세로/대각선 모두 허용.</li>
-      <li>목표값은 <strong>10초마다 변경</strong>.</li>
-      <li>해답이 없으면 보드가 <strong>자동 셔플</strong>.</li>
-    </ul>
-  </details>
+  <footer id="footnote" class="muted">Available in: English · 한국어 · 日本語. If your language isn’t listed, the English version prevails.</footer>
 
-  <details><summary><strong>소리 ON/OFF</strong></summary>
-    우측 상단 <em>스피커 아이콘</em>으로 BGM을 켜고 끕니다.
-  </details>
+<script>
+(function(){
+  // ====== 1) External policy links per language (edit these URLs) ======
+  const policyLinks = {
+    en: { privacy: 'https://your-privacy-en-url', terms: 'https://your-terms-en-url' },
+    ko: { privacy: 'https://your-privacy-ko-url', terms: 'https://your-terms-ko-url' },
+    ja: { privacy: 'https://your-privacy-ja-url', terms: 'https://your-terms-ja-url' }
+  };
 
-  <details><summary><strong>인터넷 필요?</strong></summary>
-    오프라인 플레이 가능. 단, 광고 로드는 네트워크가 필요할 수 있습니다.
-  </details>
-
-  <details><summary><strong>추적(ATT) 팝업이 왜 나오나요?</strong></summary>
-    맞춤형 광고/성과 측정을 위한 iOS 표준 팝업입니다. 허용하지 않아도 게임 이용에 지장 없습니다.
-  </details>
-
-  <h3>문제 해결</h3>
-  <ul>
-    <li><strong>무음/볼륨</strong> 및 게임 내 스피커 아이콘 확인</li>
-    <li>한 손가락으로 천천히 드래그 · iOS/앱 업데이트 · 재부팅</li>
-    <li>발열/끊김 시 백그라운드 앱 종료, 밝기 낮추기</li>
-    <li>충돌 시 재설치. 계속되면 아래 양식으로 제보:</li>
-  </ul>
-  <pre>기기 / iOS:
+  // ====== 2) Localized content (HTML snippets) ======
+  const i18n = {
+    en: {
+      title: 'SumSum: Number Puzzle',
+      subtitle: 'Developer: OAndH · Version 1.0',
+      content: `
+        <h2>Support</h2>
+        <p><strong>Contact</strong>: <a href="mailto:owandhs@gmail.com">owandhs@gmail.com</a></p>
+        <h3>Quick Guide (FAQ)</h3>
+        <details open><summary><strong>How to play?</strong></summary>
+          <ul>
+            <li>Select <strong>2 or more</strong> tiles so their <strong>sum equals the Target</strong> in the center.</li>
+            <li>Horizontal, vertical, and diagonal are all allowed.</li>
+            <li>The Target changes <strong>every 10s</strong>.</li>
+            <li>No solution? The board <strong>auto‑shuffles</strong>.</li>
+          </ul>
+        </details>
+        <details><summary><strong>Sound</strong></summary>
+          Toggle BGM using the <em>speaker icon</em> in the top‑right.
+        </details>
+        <details><summary><strong>Internet required?</strong></summary>
+          Play is available offline; ad loading may require a network connection.
+        </details>
+        <details><summary><strong>Why the ATT tracking prompt?</strong></summary>
+          It is the iOS standard dialog for personalized ads/measurement (AdMob). The game works even if you choose “Ask App Not to Track.”
+        </details>
+        <h3>Troubleshooting</h3>
+        <ul>
+          <li>Check device volume/mute switch and the in‑game speaker icon.</li>
+          <li>Drag with a single finger; update iOS/app; reboot the device.</li>
+          <li>Close background apps; lowering brightness can help with heat/lag.</li>
+          <li>If it crashes or won’t launch, reinstall. If it persists, email us with details.</li>
+        </ul>
+        <pre>Device / iOS:
+App version:
+Issue (screenshots welcome):
+Repro steps:</pre>
+      `,
+      footnote: 'Available in: English · 한국어 · 日本語. If your language isn’t listed, the English version prevails.'
+    },
+    ko: {
+      title: 'SumSum: Number Puzzle',
+      subtitle: '개발자: OAndH · 버전 1.0',
+      content: `
+        <h2>Support</h2>
+        <p><strong>문의 메일</strong>: <a href="mailto:owandhs@gmail.com">owandhs@gmail.com</a></p>
+        <h3>빠른 안내 (FAQ)</h3>
+        <details open><summary><strong>어떻게 플레이하나요?</strong></summary>
+          <ul>
+            <li>보드의 숫자를 <strong>2개 이상</strong> 이어서 선택합니다.</li>
+            <li>선택한 숫자의 <strong>합이 중앙의 목표값</strong>과 같으면 제거되고 점수를 얻습니다.</li>
+            <li><strong>가로/세로/대각선</strong> 모두 허용됩니다.</li>
+            <li>목표값은 <strong>10초마다 변경</strong>됩니다.</li>
+            <li>해답이 없으면 보드가 <strong>자동 셔플</strong>됩니다.</li>
+          </ul>
+        </details>
+        <details><summary><strong>소리 ON/OFF</strong></summary>
+          우측 상단 <em>스피커 아이콘</em>으로 BGM을 켜고 끕니다.
+        </details>
+        <details><summary><strong>인터넷이 꼭 필요하나요?</strong></summary>
+          오프라인 플레이 가능. 단, 광고 로드는 네트워크가 필요할 수 있습니다.
+        </details>
+        <details><summary><strong>추적(ATT) 팝업이 왜 나오나요?</strong></summary>
+          맞춤형 광고/성과 측정을 위한 iOS 표준 팝업입니다. 허용하지 않아도 게임은 정상 이용 가능합니다.
+        </details>
+        <h3>문제 해결</h3>
+        <ul>
+          <li>기기 볼륨/무음 스위치와 게임 내 스피커 아이콘 확인</li>
+          <li>한 손가락으로 천천히 드래그 · iOS/앱 업데이트 · 기기 재부팅</li>
+          <li>발열/끊김 시 백그라운드 앱 종료, 밝기 낮추기</li>
+          <li>충돌/실행 불가 시 재설치. 계속되면 아래 양식으로 제보</li>
+        </ul>
+        <pre>기기 / iOS:
 앱 버전:
 현상(스크린샷 환영):
 재현 단계:</pre>
+      `,
+      footnote: '지원 언어: English · 한국어 · 日本語. 목록에 없는 언어의 경우 영문본을 기준으로 합니다.'
+    },
+    ja: {
+      title: 'SumSum: Number Puzzle',
+      subtitle: '開発者: OAndH · バージョン 1.0',
+      content: `
+        <h2>サポート</h2>
+        <p><strong>メール</strong>: <a href="mailto:owandhs@gmail.com">owandhs@gmail.com</a></p>
+        <h3>クイックガイド（FAQ）</h3>
+        <details open><summary><strong>遊び方</strong></summary>
+          <ul>
+            <li><strong>2個以上</strong>のタイルをつなげ、中央の<strong>ターゲット</strong>と合計が同じになると消えてスコア。</li>
+            <li>横・縦・<strong>斜め</strong>すべてOK。</li>
+            <li>ターゲットは<strong>10秒ごと</strong>に変わります。</li>
+            <li>手がない場合は盤面が<strong>自動シャッフル</strong>されます。</li>
+          </ul>
+        </details>
+        <details><summary><strong>サウンド</strong></summary>
+          右上の<em>スピーカー</em>でBGMをON/OFF。
+        </details>
+        <details><summary><strong>ネット接続は必要？</strong></summary>
+          オフラインでも遊べます。広告の読み込みにはネット接続が必要な場合があります。
+        </details>
+        <details><summary><strong>追跡許可(ATT)のダイアログについて</strong></summary>
+          パーソナライズ広告/計測のためのiOS標準ダイアログです。許可しなくてもゲームは通常どおり遊べます。
+        </details>
+        <h3>トラブルシューティング</h3>
+        <ul>
+          <li>端末の音量/マナースイッチ、ゲーム内スピーカーを確認</li>
+          <li>指1本でドラッグ・iOS/アプリ更新・端末再起動</li>
+          <li>発熱/重い場合はバックグラウンドアプリを終了、明るさを下げる</li>
+          <li>クラッシュ/起動不可は再インストール。継続する場合は下記の情報を添えてご連絡ください。</li>
+        </ul>
+        <pre>端末 / iOS：
+アプリ版：
+発生内容（スクリーンショット歓迎）：
+再現手順：</pre>
+      `,
+      footnote: '対応言語：English · 한국어 · 日本語。記載のない言語の場合は英語版が優先されます。'
+    }
+  };
 
-  <p class="muted">Available in: English · 한국어 · 日本語. If your language isn’t listed, the English version prevails.</p>
+  // ====== 3) Lang helpers ======
+  const qs = new URLSearchParams(location.search);
+  const stored = localStorage.getItem('lang');
+  const sys = navigator.language || navigator.userLanguage || 'en';
+  const initial = (qs.get('lang') || stored || (sys.startsWith('ko')? 'ko' : sys.startsWith('ja')? 'ja' : 'en')).toLowerCase();
+
+  function setLang(lang){
+    const data = i18n[lang] || i18n.en;
+    document.getElementById('title').textContent = data.title;
+    document.getElementById('subtitle').textContent = data.subtitle;
+    document.getElementById('content').innerHTML = data.content;
+    document.getElementById('footnote').textContent = data.footnote;
+    // policy links
+    const links = policyLinks[lang] || policyLinks.en;
+    document.getElementById('lnk-privacy').href = links.privacy;
+    document.getElementById('lnk-terms').href   = links.terms;
+    // active state
+    for (const id of ['btn-en','btn-ko','btn-ja']) document.getElementById(id).classList.remove('active');
+    document.getElementById('btn-' + lang).classList.add('active');
+    // persist + URL
+    localStorage.setItem('lang', lang);
+    const p = new URL(location.href);
+    p.searchParams.set('lang', lang);
+    history.replaceState(null, '', p.toString());
+  }
+
+  // Bind buttons
+  document.getElementById('btn-en').onclick = () => setLang('en');
+  document.getElementById('btn-ko').onclick = () => setLang('ko');
+  document.getElementById('btn-ja').onclick = () => setLang('ja');
+
+  setLang(initial);
+})();
+</script>
 </body>
 </html>
