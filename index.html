@@ -174,12 +174,16 @@
     details > *:not(summary) {
       padding:0 20px 20px;
     }
-    ul {
-      margin:0;
-      padding-left:20px;
+    details ul {
+      margin:8px 0;
+      padding-left:48px;
+    }
+    main > ul {
+      margin:8px 0;
+      padding-left:28px;
     }
     li {
-      margin:8px 0;
+      margin:10px 0;
       color:var(--fg);
     }
     li strong {
@@ -240,175 +244,154 @@
       <!-- Localized HTML will be injected here -->
     </main>
 
-    <footer id="footnote">Available in: English · 한국어 · 日本語. If your language isn't listed, the English version prevails.</footer>
+    <footer id="footnote">Available in: English · 한국어 · 日本語. If your language is not listed, the English version prevails.</footer>
   </div>
 
 <script>
 (function(){
-  const policyLinks = {
+  var policyLinks = {
     en: { privacy: 'https://www.notion.so/Privacy-Policy-27e6fb3fb16c8043a31ff0585e9e9564?source=copy_link', terms: 'https://www.notion.so/Terms-of-Service-27e6fb3fb16c80c9be00fc741d4535de?source=copy_link' },
     ko: { privacy: 'https://www.notion.so/27e6fb3fb16c802bace9fb2e8692df02?source=copy_link', terms: 'https://www.notion.so/27e6fb3fb16c805bbba8d933625451ca?source=copy_link' },
     ja: { privacy: 'https://www.notion.so/27e6fb3fb16c80f394f5c746991c50a5?source=copy_link', terms: 'https://www.notion.so/27e6fb3fb16c8087acd2c117df78bfeb?source=copy_link' }
   };
 
-  const i18n = {
+  var i18n = {
     en: {
       title: 'SumSum: Number Puzzle',
       subtitle: 'Developer: OAndH · Version 1.0',
-      content: `
-        <h2>Support</h2>
-        <div class="contact-card">
-          <strong>Contact:</strong>
-          <a href="mailto:owandhs@gmail.com">owandhs@gmail.com</a>
-        </div>
-        
-        <h3>Quick Guide (FAQ)</h3>
-        <details open><summary>How to play?</summary>
-          <ul>
-            <li>Select <strong>2 or more</strong> tiles so their sum equals the <strong>Target</strong> in the center</li>
-            <li>Horizontal, vertical, and diagonal are all allowed</li>
-            <li>The Target changes <strong>every 10s</strong></li>
-            <li>No solution? The board <strong>auto-shuffles</strong></li>
-          </ul>
-        </details>
-        <details><summary>Sound</summary>
-          <p>Toggle BGM using the <em>speaker icon</em> in the top-right.</p>
-        </details>
-        <details><summary>Internet required?</summary>
-          <p>Play is available offline; ad loading may require a network connection.</p>
-        </details>
-        <details><summary>Why the ATT tracking prompt?</summary>
-          <p>It is the iOS standard dialog for personalized ads/measurement (AdMob). The game works even if you choose "Ask App Not to Track."</p>
-        </details>
-        
-        <h3>Troubleshooting</h3>
-        <ul>
-          <li>Check device volume/mute switch and the in-game speaker icon</li>
-          <li>Drag with a single finger; update iOS/app; reboot the device</li>
-          <li>Close background apps; lowering brightness can help with heat/lag</li>
-          <li>If it crashes or won't launch, reinstall. If it persists, email us with details</li>
-        </ul>
-        <pre>Device / iOS:
-App version:
-Issue (screenshots welcome):
-Repro steps:</pre>
-      `,
-      footnote: 'Available in: English · 한국어 · 日本語. If your language isn't listed, the English version prevails.'
+      content: '<h2>Support</h2>' +
+        '<div class="contact-card">' +
+        '<strong>Contact:</strong>' +
+        '<a href="mailto:owandhs@gmail.com">owandhs@gmail.com</a>' +
+        '</div>' +
+        '<h3>Quick Guide (FAQ)</h3>' +
+        '<details open><summary>How to play?</summary>' +
+        '<ul>' +
+        '<li>Select <strong>2 or more</strong> tiles so their sum equals the <strong>Target</strong> in the center</li>' +
+        '<li>Horizontal, vertical, and diagonal are all allowed</li>' +
+        '<li>The Target changes <strong>every 10s</strong></li>' +
+        '<li>No solution? The board <strong>auto-shuffles</strong></li>' +
+        '</ul>' +
+        '</details>' +
+        '<details><summary>Sound</summary>' +
+        '<p>Toggle BGM using the <em>speaker icon</em> in the top-right.</p>' +
+        '</details>' +
+        '<details><summary>Internet required?</summary>' +
+        '<p>Play is available offline; ad loading may require a network connection.</p>' +
+        '</details>' +
+        '<details><summary>Why the ATT tracking prompt?</summary>' +
+        '<p>It is the iOS standard dialog for personalized ads/measurement (AdMob). The game works even if you choose "Ask App Not to Track."</p>' +
+        '</details>' +
+        '<h3>Troubleshooting</h3>' +
+        '<ul>' +
+        '<li>Check device volume/mute switch and the in-game speaker icon</li>' +
+        '<li>Drag with a single finger; update iOS/app; reboot the device</li>' +
+        '<li>Close background apps; lowering brightness can help with heat/lag</li>' +
+        '<li>If it crashes or won\'t launch, reinstall. If it persists, email us with details</li>' +
+        '</ul>' +
+        '<pre>Device / iOS:\nApp version:\nIssue (screenshots welcome):\nRepro steps:</pre>',
+      footnote: 'Available in: English · 한국어 · 日本語. If your language is not listed, the English version prevails.'
     },
     ko: {
       title: 'SumSum: Number Puzzle',
       subtitle: '개발자: OAndH · 버전 1.0',
-      content: `
-        <h2>Support</h2>
-        <div class="contact-card">
-          <strong>문의 메일:</strong>
-          <a href="mailto:owandhs@gmail.com">owandhs@gmail.com</a>
-        </div>
-        
-        <h3>빠른 안내 (FAQ)</h3>
-        <details open><summary>어떻게 플레이하나요?</summary>
-          <ul>
-            <li>보드의 숫자를 <strong>2개 이상</strong> 이어서 선택합니다</li>
-            <li>선택한 숫자의 합이 <strong>중앙의 목표값</strong>과 같으면 제거되고 점수를 얻습니다</li>
-            <li><strong>가로/세로/대각선</strong> 모두 허용됩니다</li>
-            <li>목표값은 <strong>10초마다</strong> 변경됩니다</li>
-            <li>해답이 없으면 보드가 <strong>자동 셔플</strong>됩니다</li>
-          </ul>
-        </details>
-        <details><summary>소리 ON/OFF</summary>
-          <p>우측 상단 <em>스피커 아이콘</em>으로 BGM을 켜고 끕니다.</p>
-        </details>
-        <details><summary>인터넷이 꼭 필요하나요?</summary>
-          <p>오프라인 플레이 가능. 단, 광고 로드는 네트워크가 필요할 수 있습니다.</p>
-        </details>
-        <details><summary>추적(ATT) 팝업이 왜 나오나요?</summary>
-          <p>맞춤형 광고/성과 측정을 위한 iOS 표준 팝업입니다. 허용하지 않아도 게임은 정상 이용 가능합니다.</p>
-        </details>
-        
-        <h3>문제 해결</h3>
-        <ul>
-          <li>기기 볼륨/무음 스위치와 게임 내 스피커 아이콘 확인</li>
-          <li>한 손가락으로 천천히 드래그 · iOS/앱 업데이트 · 기기 재부팅</li>
-          <li>발열/끊김 시 백그라운드 앱 종료, 밝기 낮추기</li>
-          <li>충돌/실행 불가 시 재설치. 계속되면 아래 양식으로 제보</li>
-        </ul>
-        <pre>기기 / iOS:
-앱 버전:
-현상(스크린샷 환영):
-재현 단계:</pre>
-      `,
+      content: '<h2>Support</h2>' +
+        '<div class="contact-card">' +
+        '<strong>문의 메일:</strong>' +
+        '<a href="mailto:owandhs@gmail.com">owandhs@gmail.com</a>' +
+        '</div>' +
+        '<h3>빠른 안내 (FAQ)</h3>' +
+        '<details open><summary>어떻게 플레이하나요?</summary>' +
+        '<ul>' +
+        '<li>보드의 숫자를 <strong>2개 이상</strong> 이어서 선택합니다</li>' +
+        '<li>선택한 숫자의 합이 <strong>중앙의 목표값</strong>과 같으면 제거되고 점수를 얻습니다</li>' +
+        '<li><strong>가로/세로/대각선</strong> 모두 허용됩니다</li>' +
+        '<li>목표값은 <strong>10초마다</strong> 변경됩니다</li>' +
+        '<li>해답이 없으면 보드가 <strong>자동 셔플</strong>됩니다</li>' +
+        '</ul>' +
+        '</details>' +
+        '<details><summary>소리 ON/OFF</summary>' +
+        '<p>우측 상단 <em>스피커 아이콘</em>으로 BGM을 켜고 끕니다.</p>' +
+        '</details>' +
+        '<details><summary>인터넷이 꼭 필요하나요?</summary>' +
+        '<p>오프라인 플레이 가능. 단, 광고 로드는 네트워크가 필요할 수 있습니다.</p>' +
+        '</details>' +
+        '<details><summary>추적(ATT) 팝업이 왜 나오나요?</summary>' +
+        '<p>맞춤형 광고/성과 측정을 위한 iOS 표준 팝업입니다. 허용하지 않아도 게임은 정상 이용 가능합니다.</p>' +
+        '</details>' +
+        '<h3>문제 해결</h3>' +
+        '<ul>' +
+        '<li>기기 볼륨/무음 스위치와 게임 내 스피커 아이콘 확인</li>' +
+        '<li>한 손가락으로 천천히 드래그 · iOS/앱 업데이트 · 기기 재부팅</li>' +
+        '<li>발열/끊김 시 백그라운드 앱 종료, 밝기 낮추기</li>' +
+        '<li>충돌/실행 불가 시 재설치. 계속되면 아래 양식으로 제보</li>' +
+        '</ul>' +
+        '<pre>기기 / iOS:\n앱 버전:\n현상(스크린샷 환영):\n재현 단계:</pre>',
       footnote: '지원 언어: English · 한국어 · 日本語. 목록에 없는 언어의 경우 영문본을 기준으로 합니다.'
     },
     ja: {
       title: 'SumSum: Number Puzzle',
       subtitle: '開発者: OAndH · バージョン 1.0',
-      content: `
-        <h2>サポート</h2>
-        <div class="contact-card">
-          <strong>メール:</strong>
-          <a href="mailto:owandhs@gmail.com">owandhs@gmail.com</a>
-        </div>
-        
-        <h3>クイックガイド（FAQ）</h3>
-        <details open><summary>遊び方</summary>
-          <ul>
-            <li><strong>2個以上</strong>のタイルをつなげ、中央の<strong>ターゲット</strong>と合計が同じになると消えてスコア</li>
-            <li>横・縦・<strong>斜め</strong>すべてOK</li>
-            <li>ターゲットは<strong>10秒ごと</strong>に変わります</li>
-            <li>手がない場合は盤面が<strong>自動シャッフル</strong>されます</li>
-          </ul>
-        </details>
-        <details><summary>サウンド</summary>
-          <p>右上の<em>スピーカー</em>でBGMをON/OFF。</p>
-        </details>
-        <details><summary>ネット接続は必要？</summary>
-          <p>オフラインでも遊べます。広告の読み込みにはネット接続が必要な場合があります。</p>
-        </details>
-        <details><summary>追跡許可(ATT)のダイアログについて</summary>
-          <p>パーソナライズ広告/計測のためのiOS標準ダイアログです。許可しなくてもゲームは通常どおり遊べます。</p>
-        </details>
-        
-        <h3>トラブルシューティング</h3>
-        <ul>
-          <li>端末の音量/マナースイッチ、ゲーム内スピーカーを確認</li>
-          <li>指1本でドラッグ・iOS/アプリ更新・端末再起動</li>
-          <li>発熱/重い場合はバックグラウンドアプリを終了、明るさを下げる</li>
-          <li>クラッシュ/起動不可は再インストール。継続する場合は下記の情報を添えてご連絡ください</li>
-        </ul>
-        <pre>端末 / iOS：
-アプリ版：
-発生内容（スクリーンショット歓迎）：
-再現手順：</pre>
-      `,
+      content: '<h2>サポート</h2>' +
+        '<div class="contact-card">' +
+        '<strong>メール:</strong>' +
+        '<a href="mailto:owandhs@gmail.com">owandhs@gmail.com</a>' +
+        '</div>' +
+        '<h3>クイックガイド（FAQ）</h3>' +
+        '<details open><summary>遊び方</summary>' +
+        '<ul>' +
+        '<li><strong>2個以上</strong>のタイルをつなげ、中央の<strong>ターゲット</strong>と合計が同じになると消えてスコア</li>' +
+        '<li>横・縦・<strong>斜め</strong>すべてOK</li>' +
+        '<li>ターゲットは<strong>10秒ごと</strong>に変わります</li>' +
+        '<li>手がない場合は盤面が<strong>自動シャッフル</strong>されます</li>' +
+        '</ul>' +
+        '</details>' +
+        '<details><summary>サウンド</summary>' +
+        '<p>右上の<em>スピーカー</em>でBGMをON/OFF。</p>' +
+        '</details>' +
+        '<details><summary>ネット接続は必要？</summary>' +
+        '<p>オフラインでも遊べます。広告の読み込みにはネット接続が必要な場合があります。</p>' +
+        '</details>' +
+        '<details><summary>追跡許可(ATT)のダイアログについて</summary>' +
+        '<p>パーソナライズ広告/計測のためのiOS標準ダイアログです。許可しなくてもゲームは通常どおり遊べます。</p>' +
+        '</details>' +
+        '<h3>トラブルシューティング</h3>' +
+        '<ul>' +
+        '<li>端末の音量/マナースイッチ、ゲーム内スピーカーを確認</li>' +
+        '<li>指1本でドラッグ・iOS/アプリ更新・端末再起動</li>' +
+        '<li>発熱/重い場合はバックグラウンドアプリを終了、明るさを下げる</li>' +
+        '<li>クラッシュ/起動不可は再インストール。継続する場合は下記の情報を添えてご連絡ください</li>' +
+        '</ul>' +
+        '<pre>端末 / iOS：\nアプリ版：\n発生内容（スクリーンショット歓迎）：\n再現手順：</pre>',
       footnote: '対応言語：English · 한국어 · 日本語。記載のない言語の場合は英語版が優先されます。'
     }
   };
 
-  const qs = new URLSearchParams(location.search);
-  const stored = localStorage.getItem('lang');
-  const sys = navigator.language || navigator.userLanguage || 'en';
-  const initial = (qs.get('lang') || stored || (sys.startsWith('ko')? 'ko' : sys.startsWith('ja')? 'ja' : 'en')).toLowerCase();
+  var qs = new URLSearchParams(location.search);
+  var stored = localStorage.getItem('lang');
+  var sys = navigator.language || navigator.userLanguage || 'en';
+  var initial = (stored || (sys.startsWith('ko')? 'ko' : sys.startsWith('ja')? 'ja' : 'en')).toLowerCase();
 
   function setLang(lang){
-    const data = i18n[lang] || i18n.en;
+    var data = i18n[lang] || i18n.en;
     document.getElementById('title').textContent = data.title;
     document.getElementById('subtitle').textContent = data.subtitle;
     document.getElementById('content').innerHTML = data.content;
     document.getElementById('footnote').textContent = data.footnote;
-    const links = policyLinks[lang] || policyLinks.en;
+    var links = policyLinks[lang] || policyLinks.en;
     document.getElementById('lnk-privacy').href = links.privacy;
-    document.getElementById('lnk-terms').href   = links.terms;
-    for (const id of ['btn-en','btn-ko','btn-ja']) document.getElementById(id).classList.remove('active');
+    document.getElementById('lnk-terms').href = links.terms;
+    var ids = ['btn-en','btn-ko','btn-ja'];
+    for (var i = 0; i < ids.length; i++) {
+      document.getElementById(ids[i]).classList.remove('active');
+    }
     document.getElementById('btn-' + lang).classList.add('active');
     localStorage.setItem('lang', lang);
-    const p = new URL(location.href);
-    p.searchParams.set('lang', lang);
-    history.replaceState(null, '', p.toString());
   }
 
-  document.getElementById('btn-en').onclick = () => setLang('en');
-  document.getElementById('btn-ko').onclick = () => setLang('ko');
-  document.getElementById('btn-ja').onclick = () => setLang('ja');
+  document.getElementById('btn-en').onclick = function() { setLang('en'); };
+  document.getElementById('btn-ko').onclick = function() { setLang('ko'); };
+  document.getElementById('btn-ja').onclick = function() { setLang('ja'); };
 
   setLang(initial);
 })();
