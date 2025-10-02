@@ -248,7 +248,14 @@
   </div>
 
 <script>
-(function(){
+(function () {
+  // 안전한 storage 접근 유틸
+  var store = {
+    get: function (k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } },
+    set: function (k, v) { try { window.localStorage.setItem(k, v); } catch (e) {} }
+  };
+  var safeReplaceState = function (url) { try { history.replaceState(null, '', url); } catch (e) {} };
+
   var policyLinks = {
     en: { privacy: 'https://www.notion.so/Privacy-Policy-27e6fb3fb16c8043a31ff0585e9e9564?source=copy_link', terms: 'https://www.notion.so/Terms-of-Service-27e6fb3fb16c80c9be00fc741d4535de?source=copy_link' },
     ko: { privacy: 'https://www.notion.so/27e6fb3fb16c802bace9fb2e8692df02?source=copy_link', terms: 'https://www.notion.so/27e6fb3fb16c805bbba8d933625451ca?source=copy_link' },
@@ -367,34 +374,52 @@
     }
   };
 
+  // 초기 언어 결정(스토리지/URL이 막혀도 안전)
   var qs = new URLSearchParams(location.search);
-  var stored = localStorage.getItem('lang');
-  var sys = navigator.language || navigator.userLanguage || 'en';
-  var initial = (stored || (sys.startsWith('ko')? 'ko' : sys.startsWith('ja')? 'ja' : 'en')).toLowerCase();
+  var initial = 'en';
+  try {
+    var sys = navigator.language || navigator.userLanguage || 'en';
+    initial = (qs.get('lang') || store.get('lang') || (sys && sys.startsWith('ko') ? 'ko' : (sys && sys.startsWith('ja') ? 'ja' : 'en'))).toLowerCase();
+  } catch (e) { initial = 'en'; }
 
-  function setLang(lang){
+  function setLang(lang) {
     var data = i18n[lang] || i18n.en;
     document.getElementById('title').textContent = data.title;
     document.getElementById('subtitle').textContent = data.subtitle;
     document.getElementById('content').innerHTML = data.content;
     document.getElementById('footnote').textContent = data.footnote;
+
     var links = policyLinks[lang] || policyLinks.en;
     document.getElementById('lnk-privacy').href = links.privacy;
     document.getElementById('lnk-terms').href = links.terms;
+
     var ids = ['btn-en','btn-ko','btn-ja'];
     for (var i = 0; i < ids.length; i++) {
-      document.getElementById(ids[i]).classList.remove('active');
+      var el = document.getElementById(ids[i]);
+      if (el) el.classList.toggle('active', ids[i] === 'btn-' + lang);
     }
-    document.getElementById('btn-' + lang).classList.add('active');
-    localStorage.setItem('lang', lang);
+
+    store.set('lang', lang); // 저장 실패해도 무시
+    try {
+      var p = new URL(location.href);
+      p.searchParams.set('lang', lang);
+      safeReplaceState(p.toString());
+    } catch (e) {}
   }
 
-  document.getElementById('btn-en').onclick = function() { setLang('en'); };
-  document.getElementById('btn-ko').onclick = function() { setLang('ko'); };
-  document.getElementById('btn-ja').onclick = function() { setLang('ja'); };
+  // 버튼 이벤트
+  document.getElementById('btn-en').onclick = function () { setLang('en'); };
+  document.getElementById('btn-ko').onclick = function () { setLang('ko'); };
+  document.getElementById('btn-ja').onclick = function () { setLang('ja'); };
 
+  // 최종 적용
   setLang(initial);
 })();
 </script>
+<noscript>
+  <main style="padding:24px">
+    This page needs JavaScript. English support info is available via the links above.
+  </main>
+</noscript>
 </body>
 </html>
