@@ -317,6 +317,8 @@ h2{
   letter-spacing:0.2px;
   margin-bottom:16px;
 }
+.badge + .badge{margin-left:8px}
+.badge.soon{background:#fef3c7;color:#92400e}
 .muted{
   color:var(--muted);
   font-size:15px;
