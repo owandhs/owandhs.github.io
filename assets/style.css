@@ -61,8 +61,7 @@
     linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),
     linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
   background-size:20px 20px;
-  -webkit-mask-image:radial-gradient(circle at 30% 40%,rgba(0,0,0,.9),rgba(0,0,0,0.1) 60%);
-          mask-image:radial-gradient(circle at 30% 40%,rgba(0,0,0,.9),rgba(0,0,0,0.1) 60%);
+  opacity:0.6;
 }
 @media(max-width:768px){
   .hero{padding:22px;border-radius:16px}
@@ -465,8 +464,7 @@ code{
     linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
   background-size:20px 20px;
-  -webkit-mask-image:radial-gradient(circle at 30% 40%, rgba(0,0,0,.9), rgba(0,0,0,0.1) 60%);
-          mask-image:radial-gradient(circle at 30% 40%, rgba(0,0,0,.9), rgba(0,0,0,0.1) 60%);
+  opacity:0.6;
   z-index:0;
 }
 .home header .header-content{position:relative;z-index:1;background:transparent}
