@@ -402,7 +402,25 @@ code{
     padding:40px 0 32px;
     margin-bottom:40px;
   }
-  .home header .header-actions{position:static;margin-top:8px;justify-content:flex-end}
+  .home header{
+    padding-top:80px;
+  }
+  .home header .header-actions{
+    position:absolute;
+    top:16px;
+    right:16px;
+    left:auto;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    align-items:center;
+    max-width:calc(100% - 32px);
+    z-index:2;
+  }
+  .home header .header-content{
+    margin-top:16px;
+  }
   h1{
     font-size:32px;
   }
