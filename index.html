@@ -1,229 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex" />
-  <title>OAndH — SumSum Support</title>
-  <style>
-    :root { 
-      --fg:#1a1a1a; 
-      --muted:#64748b; 
-      --bg:#ffffff; 
-      --line:#e2e8f0; 
-      --accent:#3b82f6;
-      --accent-hover:#2563eb;
-      --card-bg:#f8fafc;
-      --shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    * { box-sizing: border-box; }
-    body{ 
-      font:16px/1.7 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif; 
-      color:var(--fg); 
-      background:#fafafa; 
-      margin:0; 
-      padding:20px;
-    }
-    .container {
-      max-width:900px;
-      margin:0 auto;
-      background:var(--bg);
-      border-radius:16px;
-      box-shadow:0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-      overflow:hidden;
-    }
-    header{ 
-      background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color:#fff;
-      padding:32px 32px 28px;
-    }
-    .header-content {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-      flex-wrap:wrap;
-    }
-    h1{ 
-      font-size:32px; 
-      font-weight:700;
-      margin:0 0 8px; 
-      letter-spacing:-0.5px;
-    }
-    .subtitle{ 
-      color:rgba(255,255,255,0.9); 
-      font-size:15px;
-    }
-    .lang{ 
-      display:flex; 
-      gap:8px; 
-    }
-    .lang button{ 
-      border:2px solid rgba(255,255,255,0.3);
-      background:rgba(255,255,255,0.1);
-      color:#fff;
-      padding:8px 16px; 
-      border-radius:8px; 
-      cursor:pointer;
-      font-weight:500;
-      font-size:14px;
-      transition:all 0.2s;
-    }
-    .lang button:hover {
-      background:rgba(255,255,255,0.2);
-      border-color:rgba(255,255,255,0.5);
-    }
-    .lang button.active{ 
-      border-color:#fff;
-      background:#fff;
-      color:#667eea;
-      font-weight:600; 
-    }
-    .top-links {
-      padding:20px 32px;
-      background:var(--card-bg);
-      border-bottom:1px solid var(--line);
-    }
-    .top-links a {
-      color:var(--muted);
-      text-decoration:none;
-      margin-right:20px;
-      font-size:14px;
-      transition:color 0.2s;
-    }
-    .top-links a:hover {
-      color:var(--accent);
-    }
-    main {
-      padding:32px;
-    }
-    h2 {
-      font-size:28px;
-      font-weight:700;
-      margin:0 0 24px;
-      color:var(--fg);
-    }
-    h3 {
-      font-size:20px;
-      font-weight:600;
-      margin:32px 0 16px;
-      color:var(--fg);
-    }
-    .contact-card {
-      background:var(--card-bg);
-      border:1px solid var(--line);
-      border-radius:12px;
-      padding:20px 24px;
-      margin-bottom:32px;
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-    .contact-card strong {
-      color:var(--muted);
-      font-weight:600;
-      font-size:14px;
-    }
-    .contact-card a {
-      color:var(--accent);
-      text-decoration:none;
-      font-weight:500;
-    }
-    .contact-card a:hover {
-      text-decoration:underline;
-    }
-    details{ 
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:12px; 
-      padding:0;
-      margin:12px 0;
-      overflow:hidden;
-      transition:all 0.2s;
-    }
-    details:hover {
-      border-color:#cbd5e1;
-      box-shadow:var(--shadow);
-    }
-    details[open] {
-      border-color:var(--accent);
-    }
-    summary {
-      padding:16px 20px;
-      cursor:pointer;
-      font-weight:600;
-      color:var(--fg);
-      list-style:none;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      user-select:none;
-    }
-    summary::-webkit-details-marker {
-      display:none;
-    }
-    summary:after {
-      content:'▼';
-      font-size:12px;
-      color:var(--muted);
-      transition:transform 0.2s;
-    }
-    details[open] summary:after {
-      transform:rotate(180deg);
-    }
-    details > *:not(summary) {
-      padding:0 20px 20px;
-    }
-    details ul {
-      margin:8px 0;
-      padding-left:48px;
-    }
-    main > ul {
-      margin:8px 0;
-      padding-left:28px;
-    }
-    li {
-      margin:10px 0;
-      color:var(--fg);
-    }
-    li strong {
-      color:var(--accent);
-    }
-    pre{ 
-      background:var(--card-bg);
-      border:1px solid var(--line);
-      border-radius:10px; 
-      padding:16px; 
-      white-space:pre-wrap;
-      font-size:14px;
-      line-height:1.6;
-      margin:16px 0;
-    }
-    footer{ 
-      color:var(--muted); 
-      font-size:14px; 
-      text-align:center;
-      padding:24px 32px;
-      border-top:1px solid var(--line);
-      background:var(--card-bg);
-    }
-    @media (max-width: 640px) {
-      body { padding:12px; }
-      header { padding:24px 20px; }
-      h1 { font-size:26px; }
-      main { padding:24px 20px; }
-      .header-content { flex-direction:column; align-items:flex-start; }
-      .lang { width:100%; justify-content:flex-start; }
-    }
-  </style>
+  <title>O&H — Apps</title>
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
-<body>
+<body class="home">
   <div class="container">
     <header>
-      <div class="header-content">
-        <div>
-          <h1 id="title">SumSum: Number Puzzle</h1>
-          <div id="subtitle" class="subtitle">Developer: OAndH · Version 1.0.1</div>
+      <div class="header-actions">
+        <div class="top-links">
+          <a href="app-ads.txt">app-ads.txt</a>
+          <!-- <a href="mailto:owandhs@gmail.com" id="i-contact">문의</a> -->
         </div>
         <nav class="lang" aria-label="Language selector">
           <button id="btn-ko" type="button">한국어</button>
@@ -231,195 +20,92 @@
           <button id="btn-ja" type="button">日本語</button>
         </nav>
       </div>
+      <div class="header-content">
+        <div>
+          <h1 id="i-title">Hello, OAndH 👋</h1>
+          <div id="i-sub" class="subtitle"></div>
+        </div>
+      </div>
+      <div class="hero" aria-label="O&H 소개 배너">
+        <span class="hero__pill" id="hero_pill">인디 스튜디오</span>
+        <h2 id="hero_title">작지만 기분 좋은 앱을 만듭니다.</h2>
+        <p id="hero_caption">Make ideas real.</p>
+        <div class="hero__actions">
+          <a class="btn btn--light" id="hero_cta_products" href="#i-apps">제품 보기</a>
+          <!-- <a class="btn btn--ghost" id="hero_cta_contact" href="mailto:owandhs@gmail.com">문의하기</a> -->
+        </div>
+        <div class="hero__deco" aria-hidden="true"></div>
+        <div class="hero__grid" aria-hidden="true"></div>
+      </div>
     </header>
 
-    <div class="top-links">
-      <a href="/app-ads.txt" id="lnk-ads">app-ads.txt</a>
-      <a href="#" id="lnk-privacy" target="_blank" rel="noopener">Privacy Policy</a>
-      <a href="#" id="lnk-terms" target="_blank" rel="noopener">Terms</a>
-      <a href="mailto:owandhs@gmail.com" id="lnk-contact">Contact</a>
-    </div>
+    <main>
+      <section class="section">
+        <h2 id="i-apps">제품</h2>
+        <div class="grid">
+          <div class="card">
+            <img src="assets/icons/sumsum.png" alt="SumSum icon" />
+            <h3>SumSum</h3>
+            <div class="badge" id="i-sumsum-badge">무료 · 광고</div>
+            <p class="muted" id="i-sumsum-snip">목표값이 바뀌는 숫자 퍼즐. 콤보를 노려보세요.</p>
+            <div class="actions">
+              <a class="btn" href="apps/sumsum/index.html" id="i-btn-support">지원</a>
+              <a class="btn secondary" href="apps/sumsum/privacy.html" id="i-btn-privacy">개인정보</a>
+              <a class="btn secondary" href="apps/sumsum/terms.html" id="i-btn-terms">이용약관</a>
+            </div>
+          </div>
 
-    <main id="content">
-      <!-- Localized HTML will be injected here -->
+          <div class="card">
+            <img src="assets/icons/myfilter.png" alt="My Filter icon" />
+            <h3>My Filter</h3>
+            <div class="badge" id="i-myfilter-badge">유료 · 무광고</div>
+            <p class="muted" id="i-myfilter-snip">실시간 필터로 사진 촬영과 영상 녹화를 지원하는 iOS 카메라 앱.</p>
+            <div class="actions">
+              <a class="btn" href="apps/myfilter/index.html" id="i-btn-support-2">지원</a>
+              <a class="btn secondary" href="apps/myfilter/privacy.html">개인정보</a>
+              <a class="btn secondary" href="apps/myfilter/terms.html">이용약관</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 회사 소개/법적 고지 섹션은 푸터로 이동 -->
+      <!--
+      <section class="section">
+        <h2 id="i-about">회사 소개</h2>
+        <p><strong id="i-company">O&H (OandH)</strong>. <span id="i-desc">세심하게 만드는 모바일 앱. 한국 기반.</span></p>
+      </section>
+
+      <section class="section">
+        <h2 id="i-legal">법적 고지</h2>
+        <ul class="list">
+          <li>모든 앱은 해당 스토어 정책을 준수합니다.</li>
+          <li>본 사이트의 링크는 <code>oandh.org</code> 기준입니다.</li>
+        </ul>
+      </section>
+      -->
+
+      <!-- 마무리 배너 제거 요청으로 삭제 -->
+      <!-- closing band removed -->
     </main>
 
-    <footer id="footnote">Available in: English · 한국어 · 日本語. If your language is not listed, the English version prevails.</footer>
+    <footer>
+      <div>
+        <p><strong id="i-company">O&H (OandH)</strong>. <span id="i-desc">Software Services</span></p>
+        <!--
+        <div>
+          <h4 id="i-legal">법적 고지</h4>
+          <ul class="list">
+            <li>모든 앱은 해당 스토어 정책을 준수합니다.</li>
+            <li>본 사이트의 링크는 <code>oandh.org</code> 기준입니다.</li>
+          </ul>
+        </div>
+        -->
+        <p>© <span id="year"></span> O&H. All rights reserved.</p>
+      </div>
+    </footer>
   </div>
-
-<script>
-(function () {
-  // 안전한 storage 접근 유틸
-  var store = {
-    get: function (k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } },
-    set: function (k, v) { try { window.localStorage.setItem(k, v); } catch (e) {} }
-  };
-  var safeReplaceState = function (url) { try { history.replaceState(null, '', url); } catch (e) {} };
-
-  var policyLinks = {
-    en: { privacy: 'https://www.notion.so/Privacy-Policy-27e6fb3fb16c8043a31ff0585e9e9564?source=copy_link', terms: 'https://www.notion.so/Terms-of-Service-27e6fb3fb16c80c9be00fc741d4535de?source=copy_link' },
-    ko: { privacy: 'https://www.notion.so/27e6fb3fb16c802bace9fb2e8692df02?source=copy_link', terms: 'https://www.notion.so/27e6fb3fb16c805bbba8d933625451ca?source=copy_link' },
-    ja: { privacy: 'https://www.notion.so/27e6fb3fb16c80f394f5c746991c50a5?source=copy_link', terms: 'https://www.notion.so/27e6fb3fb16c8087acd2c117df78bfeb?source=copy_link' }
-  };
-
-  var i18n = {
-    en: {
-      title: 'SumSum: Number Puzzle',
-      subtitle: 'Developer: OAndH · Version 1.0.1',
-      content: '<h2>Support</h2>' +
-        '<div class="contact-card">' +
-        '<strong>Contact:</strong>' +
-        '<a href="mailto:owandhs@gmail.com">owandhs@gmail.com</a>' +
-        '</div>' +
-        '<h3>Quick Guide (FAQ)</h3>' +
-        '<details open><summary>How to play?</summary>' +
-        '<ul>' +
-        '<li>Select <strong>2 or more</strong> tiles so their sum equals the <strong>Target</strong> in the center</li>' +
-        '<li>Horizontal, vertical, and diagonal are all allowed</li>' +
-        '<li>The Target changes <strong>every 10s</strong></li>' +
-        '<li>No solution? The board <strong>auto-shuffles</strong></li>' +
-        '</ul>' +
-        '</details>' +
-        '<details><summary>Sound</summary>' +
-        '<p>Toggle BGM using the <em>speaker icon</em> in the top-right.</p>' +
-        '</details>' +
-        '<details><summary>Internet required?</summary>' +
-        '<p>Play is available offline; ad loading may require a network connection.</p>' +
-        '</details>' +
-        '<details><summary>Why the ATT tracking prompt?</summary>' +
-        '<p>It is the iOS standard dialog for personalized ads/measurement (AdMob). The game works even if you choose "Ask App Not to Track."</p>' +
-        '</details>' +
-        '<h3>Troubleshooting</h3>' +
-        '<ul>' +
-        '<li>Check device volume/mute switch and the in-game speaker icon</li>' +
-        '<li>Drag with a single finger; update iOS/app; reboot the device</li>' +
-        '<li>Close background apps; lowering brightness can help with heat/lag</li>' +
-        '<li>If it crashes or won\'t launch, reinstall. If it persists, email us with details</li>' +
-        '</ul>' +
-        '<pre>Device / iOS:\nApp version:\nIssue (screenshots welcome):\nRepro steps:</pre>',
-      footnote: 'Available in: English · 한국어 · 日本語. If your language is not listed, the English version prevails.'
-    },
-    ko: {
-      title: 'SumSum: Number Puzzle',
-      subtitle: '개발자: OAndH · 버전 1.0.1',
-      content: '<h2>Support</h2>' +
-        '<div class="contact-card">' +
-        '<strong>문의 메일:</strong>' +
-        '<a href="mailto:owandhs@gmail.com">owandhs@gmail.com</a>' +
-        '</div>' +
-        '<h3>빠른 안내 (FAQ)</h3>' +
-        '<details open><summary>어떻게 플레이하나요?</summary>' +
-        '<ul>' +
-        '<li>보드의 숫자를 <strong>2개 이상</strong> 이어서 선택합니다</li>' +
-        '<li>선택한 숫자의 합이 <strong>중앙의 목표값</strong>과 같으면 제거되고 점수를 얻습니다</li>' +
-        '<li><strong>가로/세로/대각선</strong> 모두 허용됩니다</li>' +
-        '<li>목표값은 <strong>10초마다</strong> 변경됩니다</li>' +
-        '<li>해답이 없으면 보드가 <strong>자동 셔플</strong>됩니다</li>' +
-        '</ul>' +
-        '</details>' +
-        '<details><summary>소리 ON/OFF</summary>' +
-        '<p>우측 상단 <em>스피커 아이콘</em>으로 BGM을 켜고 끕니다.</p>' +
-        '</details>' +
-        '<details><summary>인터넷이 꼭 필요하나요?</summary>' +
-        '<p>오프라인 플레이 가능. 단, 광고 로드는 네트워크가 필요할 수 있습니다.</p>' +
-        '</details>' +
-        '<details><summary>추적(ATT) 팝업이 왜 나오나요?</summary>' +
-        '<p>맞춤형 광고/성과 측정을 위한 iOS 표준 팝업입니다. 허용하지 않아도 게임은 정상 이용 가능합니다.</p>' +
-        '</details>' +
-        '<h3>문제 해결</h3>' +
-        '<ul>' +
-        '<li>기기 볼륨/무음 스위치와 게임 내 스피커 아이콘 확인</li>' +
-        '<li>한 손가락으로 천천히 드래그 · iOS/앱 업데이트 · 기기 재부팅</li>' +
-        '<li>발열/끊김 시 백그라운드 앱 종료, 밝기 낮추기</li>' +
-        '<li>충돌/실행 불가 시 재설치. 계속되면 아래 양식으로 제보</li>' +
-        '</ul>' +
-        '<pre>기기 / iOS:\n앱 버전:\n현상(스크린샷 환영):\n재현 단계:</pre>',
-      footnote: '지원 언어: English · 한국어 · 日本語. 목록에 없는 언어의 경우 영문본을 기준으로 합니다.'
-    },
-    ja: {
-      title: 'SumSum: Number Puzzle',
-      subtitle: '開発者: OAndH · バージョン 1.0.1',
-      content: '<h2>サポート</h2>' +
-        '<div class="contact-card">' +
-        '<strong>メール:</strong>' +
-        '<a href="mailto:owandhs@gmail.com">owandhs@gmail.com</a>' +
-        '</div>' +
-        '<h3>クイックガイド（FAQ）</h3>' +
-        '<details open><summary>遊び方</summary>' +
-        '<ul>' +
-        '<li><strong>2個以上</strong>のタイルをつなげ、中央の<strong>ターゲット</strong>と合計が同じになると消えてスコア</li>' +
-        '<li>横・縦・<strong>斜め</strong>すべてOK</li>' +
-        '<li>ターゲットは<strong>10秒ごと</strong>に変わります</li>' +
-        '<li>手がない場合は盤面が<strong>自動シャッフル</strong>されます</li>' +
-        '</ul>' +
-        '</details>' +
-        '<details><summary>サウンド</summary>' +
-        '<p>右上の<em>スピーカー</em>でBGMをON/OFF。</p>' +
-        '</details>' +
-        '<details><summary>ネット接続は必要？</summary>' +
-        '<p>オフラインでも遊べます。広告の読み込みにはネット接続が必要な場合があります。</p>' +
-        '</details>' +
-        '<details><summary>追跡許可(ATT)のダイアログについて</summary>' +
-        '<p>パーソナライズ広告/計測のためのiOS標準ダイアログです。許可しなくてもゲームは通常どおり遊べます。</p>' +
-        '</details>' +
-        '<h3>トラブルシューティング</h3>' +
-        '<ul>' +
-        '<li>端末の音量/マナースイッチ、ゲーム内スピーカーを確認</li>' +
-        '<li>指1本でドラッグ・iOS/アプリ更新・端末再起動</li>' +
-        '<li>発熱/重い場合はバックグラウンドアプリを終了、明るさを下げる</li>' +
-        '<li>クラッシュ/起動不可は再インストール。継続する場合は下記の情報を添えてご連絡ください</li>' +
-        '</ul>' +
-        '<pre>端末 / iOS：\nアプリ版：\n発生内容（スクリーンショット歓迎）：\n再現手順：</pre>',
-      footnote: '対応言語：English · 한국어 · 日本語。記載のない言語の場合は英語版が優先されます。'
-    }
-  };
-
-  // 초기 언어 결정(스토리지/URL이 막혀도 안전)
-  var qs = new URLSearchParams(location.search);
-  var initial = 'en';
-  try {
-    var sys = navigator.language || navigator.userLanguage || 'en';
-    initial = (qs.get('lang') || store.get('lang') || (sys && sys.startsWith('ko') ? 'ko' : (sys && sys.startsWith('ja') ? 'ja' : 'en'))).toLowerCase();
-  } catch (e) { initial = 'en'; }
-
-  function setLang(lang) {
-    var data = i18n[lang] || i18n.en;
-    document.getElementById('title').textContent = data.title;
-    document.getElementById('subtitle').textContent = data.subtitle;
-    document.getElementById('content').innerHTML = data.content;
-    document.getElementById('footnote').textContent = data.footnote;
-
-    var links = policyLinks[lang] || policyLinks.en;
-    document.getElementById('lnk-privacy').href = links.privacy;
-    document.getElementById('lnk-terms').href = links.terms;
-
-    var ids = ['btn-en','btn-ko','btn-ja'];
-    for (var i = 0; i < ids.length; i++) {
-      var el = document.getElementById(ids[i]);
-      if (el) el.classList.toggle('active', ids[i] === 'btn-' + lang);
-    }
-
-    store.set('lang', lang); // 저장 실패해도 무시
-    try {
-      var p = new URL(location.href);
-      p.searchParams.set('lang', lang);
-      safeReplaceState(p.toString());
-    } catch (e) {}
-  }
-
-  // 버튼 이벤트
-  document.getElementById('btn-en').onclick = function () { setLang('en'); };
-  document.getElementById('btn-ko').onclick = function () { setLang('ko'); };
-  document.getElementById('btn-ja').onclick = function () { setLang('ja'); };
-
-  // 최종 적용
-  setLang(initial);
-})();
-</script>
-<noscript>
-  <main style="padding:24px">
-    This page needs JavaScript. English support info is available via the links above.
-  </main>
-</noscript>
+  <script src="assets/lang.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
