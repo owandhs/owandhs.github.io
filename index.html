@@ -8,6 +8,8 @@
 </head>
 <body class="home">
   <div class="container">
+
+    <!-- ── HEADER ── -->
     <header>
       <div class="header-actions">
         <nav class="lang" aria-label="Language selector">
@@ -16,96 +18,127 @@
           <button id="btn-ja" type="button">日本語</button>
         </nav>
       </div>
-      <div class="header-content">
-        <div>
-          <h1 id="i-title">Hello, OAndH 👋</h1>
-          <div id="i-sub" class="subtitle"></div>
+
+      <div class="hero-wrap">
+        <div class="hero-text">
+          <span class="hero__pill" id="hero_pill">인디 스튜디오</span>
+          <h1 id="hero_title">작지만 기분 좋은<br>앱을 만듭니다.</h1>
+          <p class="hero-sub" id="hero_caption">Make ideas real.</p>
+          <div class="hero__actions">
+            <a class="btn btn--light" id="hero_cta_products" href="#i-apps">제품 보기</a>
+          </div>
         </div>
-      </div>
-      <div class="hero" aria-label="O&H 소개 배너">
-        <span class="hero__pill" id="hero_pill">인디 스튜디오</span>
-        <h2 id="hero_title">작지만 기분 좋은 앱을 만듭니다.</h2>
-        <p id="hero_caption">Make ideas real.</p>
-        <div class="hero__actions">
-          <a class="btn btn--light" id="hero_cta_products" href="#i-apps">제품 보기</a>
-          <!-- <a class="btn btn--ghost" id="hero_cta_contact" href="mailto:contact@oandh.org">문의하기</a> -->
+        <div class="hero-graphic" aria-hidden="true">
+          <div class="orb orb--a"></div>
+          <div class="orb orb--b"></div>
+          <div class="orb orb--c"></div>
         </div>
-        <div class="hero__deco" aria-hidden="true"></div>
-        <div class="hero__grid" aria-hidden="true"></div>
       </div>
     </header>
 
+    <!-- ── MAIN ── -->
     <main>
-      <section class="section">
-        <h2 id="i-apps">제품</h2>
+      <section class="section" id="i-apps">
+        <div class="section-header">
+          <h2 class="section-title" id="i-apps-title">Our Apps</h2>
+          <p class="section-sub" id="i-apps-sub">세심하게 만든 모바일 앱</p>
+        </div>
+
         <div class="grid">
+
+          <!-- SumSum -->
           <div class="card">
-            <img src="assets/icons/sumsum.png" alt="SumSum icon" />
-            <h3>SumSum</h3>
-            <div class="badge" id="i-sumsum-badge">무료 · 광고</div>
-            <p class="muted" id="i-sumsum-snip">목표값이 바뀌는 숫자 퍼즐. 콤보를 노려보세요.</p>
-            <div class="actions">
-              <a class="btn" href="apps/sumsum/index.html" id="i-btn-support">지원</a>
-              <a class="btn secondary" href="apps/sumsum/privacy.html" id="i-btn-privacy">개인정보</a>
-              <a class="btn secondary" href="apps/sumsum/terms.html" id="i-btn-terms">이용약관</a>
+            <div class="card-inner">
+              <img src="assets/icons/sumsum.png" alt="SumSum icon" />
+              <div class="card-meta">
+                <h3>SumSum</h3>
+                <div class="badge-row">
+                  <span class="badge" id="i-sumsum-badge">무료 · 광고</span>
+                  <span class="badge ios" id="i-sumsum-ios">iOS</span>
+                  <span class="badge aos" id="i-sumsum-aos">Android</span>
+                </div>
+                <p class="muted" id="i-sumsum-snip">목표값이 바뀌는 숫자 퍼즐. 콤보를 노려보세요.</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a class="btn btn-support" href="apps/sumsum/index.html" id="i-btn-support">지원</a>
+              <div class="policy-links">
+                <a href="apps/sumsum/privacy.html" id="i-btn-privacy">개인정보</a>
+                <span>·</span>
+                <a href="apps/sumsum/terms.html" id="i-btn-terms">이용약관</a>
+              </div>
             </div>
           </div>
 
+          <!-- Own View -->
           <div class="card">
-            <img src="assets/icons/myfilter.png" alt="Own View icon" />
-            <h3>Own View</h3>
-            <div>
-              <span class="badge" id="i-myfilter-badge">유료 · 무광고</span>
-              <span class="badge soon" id="i-soon-badge">출시예정</span>
+            <div class="card-inner">
+              <img src="assets/icons/myfilter.png" alt="Own View icon" />
+              <div class="card-meta">
+                <h3>Own View</h3>
+                <div class="badge-row">
+                  <span class="badge" id="i-myfilter-badge">유료 · 무광고</span>
+                  <span class="badge ios" id="i-myfilter-ios">iOS</span>
+                </div>
+                <p class="muted" id="i-myfilter-snip">실시간 필터로 사진 촬영과 영상 녹화를 지원하는 iOS 카메라 앱.</p>
+              </div>
             </div>
-            <p class="muted" id="i-myfilter-snip">실시간 필터로 사진 촬영과 영상 녹화를 지원하는 iOS 카메라 앱.</p>
-            <div class="actions">
-              <a class="btn" href="apps/myfilter/index.html" id="i-btn-support-2">지원</a>
-              <a class="btn secondary" href="apps/myfilter/privacy.html" id="i-btn-privacy-2">개인정보</a>
-              <a class="btn secondary" href="apps/myfilter/terms.html" id="i-btn-terms-2">이용약관</a>
+            <div class="card-footer">
+              <a class="btn btn-support" href="apps/myfilter/index.html" id="i-btn-support-2">지원</a>
+              <div class="policy-links">
+                <a href="apps/myfilter/privacy.html" id="i-btn-privacy-2">개인정보</a>
+                <span>·</span>
+                <a href="apps/myfilter/terms.html" id="i-btn-terms-2">이용약관</a>
+              </div>
             </div>
           </div>
+
+          <!-- One Luck -->
+          <div class="card">
+            <div class="card-inner">
+              <img src="assets/icons/oneluck.png" alt="One Luck icon" />
+              <div class="card-meta">
+                <h3>One Luck</h3>
+                <div class="badge-row">
+                  <span class="badge" id="i-oneluck-badge">무료 · 광고</span>
+                  <span class="badge ios" id="i-oneluck-ios">iOS</span>
+                  <span class="badge aos" id="i-oneluck-aos">Android</span>
+                  <span class="badge soon" id="i-oneluck-soon-badge">출시예정</span>
+                </div>
+                <p class="muted" id="i-oneluck-snip">행운을 시험해보는 소셜 카지노 슬롯 게임. 실제 화폐는 사용되지 않습니다.</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a class="btn btn-support" href="apps/oneluck/index.html" id="i-btn-support-3">지원</a>
+              <div class="policy-links">
+                <a href="apps/oneluck/privacy.html" id="i-btn-privacy-3">개인정보</a>
+                <span>·</span>
+                <a href="apps/oneluck/terms.html" id="i-btn-terms-3">이용약관</a>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
-
-      <!-- 회사 소개/법적 고지 섹션은 푸터로 이동 -->
-      <!--
-      <section class="section">
-        <h2 id="i-about">회사 소개</h2>
-        <p><strong id="i-company">O&H (OandH)</strong>. <span id="i-desc">세심하게 만드는 모바일 앱. 한국 기반.</span></p>
-      </section>
-
-      <section class="section">
-        <h2 id="i-legal">법적 고지</h2>
-        <ul class="list">
-          <li>모든 앱은 해당 스토어 정책을 준수합니다.</li>
-          <li>본 사이트의 링크는 <code>oandh.org</code> 기준입니다.</li>
-        </ul>
-      </section>
-      -->
-
-      <!-- 마무리 배너 제거 요청으로 삭제 -->
-      <!-- closing band removed -->
     </main>
 
+    <!-- ── FOOTER ── -->
     <footer>
-      <div>
-        <p><strong id="i-company">O&H (OandH)</strong>. <span id="i-desc">Software Services</span></p>
-        <!--
-        <div>
-          <h4 id="i-legal">법적 고지</h4>
-          <ul class="list">
-            <li>모든 앱은 해당 스토어 정책을 준수합니다.</li>
-            <li>본 사이트의 링크는 <code>oandh.org</code> 기준입니다.</li>
-          </ul>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="footer-logo">O&H</span>
+          <p id="i-desc">Software Services</p>
         </div>
-        -->
-        <p><strong id="i-contact">문의</strong>: <a href="mailto:contact@oandh.org">contact@oandh.org</a></p>
-        <p>© <span id="year"></span> O&H. All rights reserved.</p>
-        <p><a href="app-ads.txt">app-ads.txt</a></p>
+        <div class="footer-links">
+          <p><strong id="i-contact">문의</strong>: <a href="mailto:contact@oandh.org">contact@oandh.org</a></p>
+          <p><a href="app-ads.txt">app-ads.txt</a></p>
+        </div>
+        <p class="footer-copy">© <span id="year"></span> O&H. All rights reserved.</p>
       </div>
     </footer>
-  </div>
+
+  </div><!-- /container -->
+
   <script src="assets/lang.js"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
